@@ -3,11 +3,10 @@
 plugins {
     `java-gradle-plugin`
     `maven-publish`
-    id("org.jetbrains.kotlin.jvm") version("1.3.72")
+    id("org.jetbrains.kotlin.jvm") version ("1.3.72")
 }
 
-group = "com.minelittlepony"
-version = "0.1-SNAPSHOT"
+val release: String by project
 
 gradlePlugin {
     plugins {
@@ -21,7 +20,7 @@ gradlePlugin {
 repositories {
     jcenter()
     mavenCentral()
-    maven("https://maven.fabricmc.net"){
+    maven("https://maven.fabricmc.net") {
         name = "fabricmc"
     }
 }
@@ -65,5 +64,21 @@ publishing {
     }
     repositories {
         mavenLocal()
+
+        val s3AccessKey: String? = System.getenv("ACCESS_KEY")
+        val s3SecretKey: String? = System.getenv("SECRET_KEY")
+
+        if (s3AccessKey != null && s3SecretKey != null) {
+            maven {
+                name = "MineLittlePony"
+                url = uri("s3://repo.minelittlepony-mod.com/maven/" +
+                        if (release == "SNAPSHOT") "snapshot" else "release")
+
+                credentials(AwsCredentials::class.java) {
+                    this.accessKey = s3AccessKey
+                    this.secretKey = s3SecretKey
+                }
+            }
+        }
     }
 }

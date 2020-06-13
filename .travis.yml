@@ -4,4 +4,4 @@ jdk:
 
 jobs:
   include:
-    - script: ./gradlew publish
+    - script: ./gradlew build publish

@@ -27,7 +27,7 @@ buildscript {
         }   
 
         maven {
-            name = "Fabric
+            name = "Fabric"
             url = "https://maven.fabricmc.net/"
         }
     }

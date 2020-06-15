@@ -41,10 +41,26 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     }
 }
 
+tasks {
+    named<Jar>("jar") {
+        from("LICENSE")
+    }
+    register<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        from(sourceSets["main"].allSource)
+        from("LICENSE")
+    }
+}
+
+artifacts {
+    archives(tasks["sourcesJar"])
+}
+
 publishing {
     publications {
-        create<MavenPublication>("maven") {
-            from(components.getByName("java"))
+        // java-gradle-plugin creates a maven publication automatically
+        create<MavenPublication>("pluginMaven") {
+            artifact(tasks["sourcesJar"])
             pom {
                 name.set("intermediary2srg")
                 description.set("Translates intermediary mods to searge names")
@@ -63,7 +79,6 @@ publishing {
                 }
             }
         }
-
     }
     repositories {
         mavenLocal()

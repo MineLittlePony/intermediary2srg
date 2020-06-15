@@ -26,11 +26,14 @@ repositories {
 }
 
 dependencies {
-    implementation("net.fabricmc:fabric-loom:0.2.7-SNAPSHOT")
+    implementation("net.fabricmc:fabric-loom:0.4-SNAPSHOT")
     implementation("net.fabricmc:tiny-remapper:0.3.1.71")
     implementation("net.fabricmc:tiny-mappings-parser:0.3.0+build.17")
     implementation("com.google.code.gson:gson:2.8.5")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    testImplementation(gradleTestKit())
+    testImplementation("junit:junit:4.13")
 }
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {

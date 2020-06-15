@@ -1,0 +1,29 @@
+plugins {
+    id 'fabric-loom' version '0.4-SNAPSHOT'
+    id 'intermediary2srg' version '0.1-SNAPSHOT'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    // mcp_config is stored on forge's repo
+    maven {
+        name = "Forge"
+        url = "https://files.minecraftforge.net/maven"
+    }
+}
+
+dependencies {
+    // minecraft required dependencies
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+    // searge required dependencies
+    intermediary "net.fabricmc:intermediary:${project.minecraft_version}:v2"
+    mcpconfig "de.oceanlabs.mcp:mcp_config:${project.minecraft_version}@zip"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

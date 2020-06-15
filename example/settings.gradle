@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        jcenter()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        maven {
+            name = "MineLP"
+            url = "https://repo.minelittlepony-mod.com/maven/snapshot"
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "example"

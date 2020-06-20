@@ -56,6 +56,13 @@ class BuildLogicFunctionalTest {
         val result = newGradleRunner("build")
 
         assertEquals(SUCCESS, result.task(":remapSrgJar")?.outcome)
-        assertTrue(File(tempFolder.root, "build/libs/example-1.0-srg.jar").exists())
+        assertEquals(SUCCESS, result.task(":remapSrgSourcesJar")?.outcome)
+
+        assertTrue(File(tempFolder.root, "build/libs/example-1.0.jar").exists())
+        assertTrue(File(tempFolder.root, "build/libs/example-1.0-sources.jar").exists())
+        assertTrue(File(tempFolder.root, "build/libs/example-intermediary-1.0.jar").exists())
+        assertTrue(File(tempFolder.root, "build/libs/example-intermediary-1.0-sources.jar").exists())
+        assertTrue(File(tempFolder.root, "build/libs/example-searge-1.0-sources.jar").exists())
+        assertTrue(File(tempFolder.root, "build/libs/example-searge-1.0.jar").exists())
     }
 }

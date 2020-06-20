@@ -10,6 +10,7 @@ pluginManagement {
             url = "https://repo.minelittlepony-mod.com/maven/snapshot"
         }
         gradlePluginPortal()
+        mavenLocal()
     }
 }
 

@@ -31,6 +31,10 @@ dependencies {
     implementation("net.fabricmc:tiny-mappings-parser:0.3.0+build.17")
     implementation("com.google.code.gson:gson:2.8.5")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.cadixdev:mercury:0.1.0.fabric-SNAPSHOT")
+    implementation("org.zeroturnaround:zt-zip:1.13")
+    implementation("net.fabricmc:stitch:0.4.6+")
+    implementation("net.fabricmc:lorenz-tiny:2.0.0+build.2")
 
     testImplementation(gradleTestKit())
     testImplementation("junit:junit:4.13")

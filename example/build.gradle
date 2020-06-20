@@ -1,6 +1,6 @@
 plugins {
     id 'fabric-loom' version '0.4-SNAPSHOT'
-    id 'intermediary2srg' version '0.1-SNAPSHOT'
+    id 'intermediary2srg' version '0.2-SNAPSHOT'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -26,4 +26,9 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
 }
